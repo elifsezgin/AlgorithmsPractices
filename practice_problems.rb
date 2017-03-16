@@ -43,3 +43,29 @@ def find_complement(num)
     end
     comp
 end
+# Keyboard row
+# Given a List of words, return the words that can be typed using letters of alphabet on only one row's of American keyboard like the image below.
+
+# Input: ["Hello", "Alaska", "Dad", "Peace"]
+# Output: ["Alaska", "Dad"]
+
+# You may use one character in the keyboard more than once.
+# You may assume the input string will only contain letters of alphabet.
+
+def find_words(words)
+    rows = ['qwerrtyuiop', 'asdfghjkl', 'zxcvbnm']
+    one_row_words = []
+    words.each do |word|
+        row = rows.select { |a| a.include?(word[0].downcase) }
+        pass = false
+        word.each_char do |letter|
+            unless row[0].include?(letter.downcase)
+                pass = true
+                break
+            end
+        end
+        next if pass
+        one_row_words << word
+    end
+    one_row_words
+end
