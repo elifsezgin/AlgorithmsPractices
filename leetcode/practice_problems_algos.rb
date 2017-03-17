@@ -165,3 +165,27 @@ def next_greater_element(find_nums, nums)
     end
     result
 end
+
+# Island Perimeter
+# You are given a map in form of a two-dimensional integer grid where 1 represents land and 0 represents water. Grid cells are connected horizontally/vertically (not diagonally). The grid is completely surrounded by water, and there is exactly one island (i.e., one or more connected land cells). The island doesn't have "lakes" (water inside that isn't connected to the water around the island). One cell is a square with side length 1. The grid is rectangular, width and height don't exceed 100. Determine the perimeter of the island.
+#
+# [[0,1,0,0],
+#  [1,1,1,0],
+#  [0,1,0,0],
+#  [1,1,0,0]]
+#
+# Answer: 16
+
+def island_perimeter(grid)
+    islands = 0
+    neighbors = 0
+    grid.each_with_index do |row, idx1|
+       row.each_with_index do |el, idx2|
+           next unless el == 1
+           islands += 1
+           neighbors += 1 if idx1+1 < grid.length && grid[idx1+1][idx2] == 1
+           neighbors += 1 if idx2+1 < grid[0].length && grid[idx1][idx2+1] == 1
+       end
+    end
+    islands * 4 - neighbors * 2
+end
