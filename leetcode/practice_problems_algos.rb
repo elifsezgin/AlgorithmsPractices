@@ -113,3 +113,17 @@ def fizz_buzz(n)
     end
     result
 end
+
+
+# Reverse String
+# Write a function that takes a string as input and returns the string reversed.
+#
+# Example:
+# Given s = "hello", return "olleh".
+def reverse_string(s)
+    half = s.length / 2
+    half.times do |idx|
+        s[idx], s[s.length - idx - 1] = s[s.length - idx - 1], s[idx]
+    end
+    s
+end
